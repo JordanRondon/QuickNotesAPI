@@ -1,4 +1,4 @@
-package com.Notes.QuickNotesAPI.repository.Interface;
+package com.Notes.QuickNotesAPI.service.Interface;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 import com.Notes.QuickNotesAPI.model.Users;
 
-public interface IUsersRepository {
+public interface IUsersService {
 
     public Users getUsersById(int UserId);
 
@@ -15,5 +15,4 @@ public interface IUsersRepository {
     public List<User> getUsersByLastNameInit(String lastNameInitial);
 
     public boolean AuthenticateUser(String email, String password);
-
 }
