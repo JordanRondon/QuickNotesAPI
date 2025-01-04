@@ -12,13 +12,13 @@ import com.QuickNotesAPI.QuickNotes.model.Users;
 import com.QuickNotesAPI.QuickNotes.service.UsersService;
 
 @RestController
-@RequestMapping("/api/User")
+@RequestMapping("/api/user")
 public class UsersController {
 
     @Autowired
     private UsersService usersService;
 
-    @GetMapping("/{userID}")
+    @GetMapping("/{userId}")
     private ResponseEntity<Users> getUserById(@PathVariable int userId) {
         try {
             Users user = usersService.getUserById(userId);

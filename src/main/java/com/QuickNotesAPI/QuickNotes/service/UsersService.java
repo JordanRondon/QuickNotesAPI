@@ -1,11 +1,13 @@
 package com.QuickNotesAPI.QuickNotes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.QuickNotesAPI.QuickNotes.model.Users;
 import com.QuickNotesAPI.QuickNotes.repository.IUsersRepository;
 import com.QuickNotesAPI.QuickNotes.service.Interface.IUsersService;
 
+@Service
 public class UsersService implements IUsersService {
 
     @Autowired
