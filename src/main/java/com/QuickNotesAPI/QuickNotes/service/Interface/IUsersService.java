@@ -14,4 +14,6 @@ public interface IUsersService {
 
     public void register(Users user);
 
+    public void disable(int userId);
+
 }
