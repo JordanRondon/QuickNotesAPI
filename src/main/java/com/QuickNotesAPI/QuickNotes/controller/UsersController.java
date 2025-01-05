@@ -30,6 +30,16 @@ public class UsersController {
         }
     }
 
+    @GetMapping("/list/{lastNameInitial}")
+    private ResponseEntity<List<Users>> getListUsersByLastNameInitial(@PathVariable String lastNameInitial) {
+        try {
+            List<Users> listUsers = usersService.getListUsersByLastNameInitial(lastNameInitial);
+            return ResponseEntity.ok(listUsers);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
     @GetMapping("/{userId}")
     private ResponseEntity<Users> getUserById(@PathVariable int userId) {
         try {
