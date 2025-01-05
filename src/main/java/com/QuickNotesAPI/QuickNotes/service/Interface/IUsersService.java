@@ -12,4 +12,6 @@ public interface IUsersService {
 
     public Users getUserById(int userId);
 
+    public void register(Users user);
+
 }
