@@ -1,5 +1,7 @@
 package com.QuickNotesAPI.QuickNotes.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,11 @@ public class UsersService implements IUsersService {
 
     @Autowired
     private IUsersRepository usersRepository;
+
+    @Override
+    public List<Users> getListUsers() {
+        return usersRepository.findAll();
+    }
 
     @Override
     public Users getUserById(int userId) {

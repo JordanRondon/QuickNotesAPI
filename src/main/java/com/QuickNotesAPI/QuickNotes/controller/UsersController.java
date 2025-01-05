@@ -1,5 +1,7 @@
 package com.QuickNotesAPI.QuickNotes.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,16 @@ public class UsersController {
 
     @Autowired
     private UsersService usersService;
+
+    @GetMapping("/list")
+    private ResponseEntity<List<Users>> getListUsers() {
+        try {
+            List<Users> listUsers = usersService.getListUsers();
+            return ResponseEntity.ok(listUsers);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
 
     @GetMapping("/{userId}")
     private ResponseEntity<Users> getUserById(@PathVariable int userId) {
