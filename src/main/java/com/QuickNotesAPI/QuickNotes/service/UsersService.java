@@ -21,6 +21,11 @@ public class UsersService implements IUsersService {
     }
 
     @Override
+    public List<Users> getListUsersByLastNameInitial(String lastNameInitial) {
+        return usersRepository.getListUsersByLastNameInit(lastNameInitial);
+    }
+
+    @Override
     public Users getUserById(int userId) {
         return usersRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
