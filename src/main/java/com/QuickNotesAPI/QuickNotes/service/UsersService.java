@@ -31,4 +31,9 @@ public class UsersService implements IUsersService {
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
     }
 
+    @Override
+    public void register(Users user) {
+        usersRepository.save(user);
+    }
+
 }
