@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -30,6 +31,7 @@ public class Note {
     private boolean visible;
 
     @ManyToOne
+    @JoinColumn(name = "users_id", referencedColumnName = "users_id")
     private Users user;
 
     public Note() {
