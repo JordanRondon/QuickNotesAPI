@@ -36,4 +36,9 @@ public class UsersService implements IUsersService {
         usersRepository.save(user);
     }
 
+    @Override
+    public void disable(int userId) {
+        usersRepository.disable(userId);
+    }
+
 }
