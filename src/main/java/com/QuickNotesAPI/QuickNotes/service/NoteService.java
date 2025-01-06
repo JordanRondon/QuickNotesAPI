@@ -43,4 +43,9 @@ public class NoteService implements INoteService {
         noteRepository.save(note);
     }
 
+    @Override
+    public void delete(int noteId) {
+        noteRepository.deleteById(noteId);
+    }
+
 }

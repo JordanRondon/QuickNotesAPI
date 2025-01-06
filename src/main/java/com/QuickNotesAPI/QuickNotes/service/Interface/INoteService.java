@@ -12,4 +12,6 @@ public interface INoteService {
 
     public void update(Note note);
 
+    public void delete(int noteId);
+
 }
