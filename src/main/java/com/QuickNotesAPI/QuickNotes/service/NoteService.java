@@ -26,14 +26,14 @@ public class NoteService implements INoteService {
     }
 
     @Override
-    public void save(Note note, int userId) {
+    public void saveByUserId(Note note, int userId) {
         Users user = usersService.getUserById(userId);
         note.setUser(user);
         noteRepository.save(note);
     }
 
     @Override
-    public void update(Note modifiedNote) {
+    public void updateById(Note modifiedNote) {
         int noteId = modifiedNote.getNoteId();
         Note note = noteRepository.findById(noteId)
                 .orElseThrow(() -> new RuntimeException("Note not found with id: " + noteId));
@@ -44,7 +44,7 @@ public class NoteService implements INoteService {
     }
 
     @Override
-    public void delete(int noteId) {
+    public void deleteById(int noteId) {
         noteRepository.deleteById(noteId);
     }
 
