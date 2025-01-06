@@ -8,4 +8,6 @@ public interface INoteService {
 
     public List<Note> getListNoteByUserId(int userId);
 
+    public void save(Note note, int userId);
+
 }
