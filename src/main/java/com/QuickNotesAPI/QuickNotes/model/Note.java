@@ -27,8 +27,6 @@ public class Note {
     private LocalDateTime creationDate;
     @Column(name = "number_characters")
     private int numberCharacters;
-    @Column(name = "visible")
-    private boolean visible;
 
     @ManyToOne
     @JoinColumn(name = "users_id", referencedColumnName = "users_id")
@@ -39,14 +37,13 @@ public class Note {
     }
 
     public Note(int noteId, String title, String textNote, LocalDateTime creationDate, int numberCharacters,
-            Users user, boolean visible) {
+            Users user) {
         this.noteId = noteId;
         this.title = title;
         this.textNote = textNote;
         this.creationDate = creationDate;
         this.numberCharacters = numberCharacters;
         this.user = user;
-        this.visible = visible;
     }
 
     public void setNoteId(int noteId) {
@@ -97,11 +94,4 @@ public class Note {
         return this.user;
     }
 
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-    public boolean getVisible() {
-        return this.visible;
-    }
 }
