@@ -14,7 +14,6 @@ public interface INoteRepository extends JpaRepository<Note, Integer> {
             SELECT nt FROM Note nt
             WHERE nt.user.usersId = :userId
             AND nt.user.visible = true
-            AND nt.visible = true
                 """)
     public List<Note> getListNoteByUserId(@Param("userId") int userId);
 
