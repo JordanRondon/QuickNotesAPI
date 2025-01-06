@@ -32,4 +32,15 @@ public class NoteService implements INoteService {
         noteRepository.save(note);
     }
 
+    @Override
+    public void update(Note modifiedNote) {
+        int noteId = modifiedNote.getNoteId();
+        Note note = noteRepository.findById(noteId)
+                .orElseThrow(() -> new RuntimeException("Note not found with id: " + noteId));
+        note.setTitle(modifiedNote.getTitle());
+        note.setTextNote(modifiedNote.getTextNote());
+        note.setCreationDate(modifiedNote.getCreationDate());
+        noteRepository.save(note);
+    }
+
 }

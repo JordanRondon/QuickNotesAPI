@@ -10,4 +10,6 @@ public interface INoteService {
 
     public void save(Note note, int userId);
 
+    public void update(Note note);
+
 }
