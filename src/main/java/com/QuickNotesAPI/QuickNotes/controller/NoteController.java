@@ -35,9 +35,9 @@ public class NoteController {
     }
 
     @PostMapping("/save/{userId}")
-    private ResponseEntity<String> save(@RequestBody Note note, @PathVariable int userId) {
+    private ResponseEntity<String> saveByUserId(@RequestBody Note note, @PathVariable int userId) {
         try {
-            noteService.save(note, userId);
+            noteService.saveByUserId(note, userId);
             return ResponseEntity.status(HttpStatus.CREATED).body("Note registered successfully");
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,9 +47,9 @@ public class NoteController {
     }
 
     @PutMapping("/update")
-    private ResponseEntity<String> update(@RequestBody Note note) {
+    private ResponseEntity<String> updateById(@RequestBody Note note) {
         try {
-            noteService.update(note);
+            noteService.updateById(note);
             return ResponseEntity.status(HttpStatus.CREATED).body("Note successfully updated");
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,9 +59,9 @@ public class NoteController {
     }
 
     @DeleteMapping("/delete/{noteId}")
-    private ResponseEntity<String> delete(@PathVariable int noteId) {
+    private ResponseEntity<String> deleteById(@PathVariable int noteId) {
         try {
-            noteService.delete(noteId);
+            noteService.deleteById(noteId);
             return ResponseEntity.status(HttpStatus.CREATED).body("Note successfully deleted");
         } catch (Exception e) {
             e.printStackTrace();

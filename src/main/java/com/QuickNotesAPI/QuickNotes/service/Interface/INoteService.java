@@ -8,10 +8,10 @@ public interface INoteService {
 
     public List<Note> getListNoteByUserId(int userId);
 
-    public void save(Note note, int userId);
+    public void saveByUserId(Note note, int userId);
 
-    public void update(Note note);
+    public void updateById(Note note);
 
-    public void delete(int noteId);
+    public void deleteById(int noteId);
 
 }
