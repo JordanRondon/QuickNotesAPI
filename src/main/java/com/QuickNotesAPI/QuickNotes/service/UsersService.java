@@ -3,6 +3,7 @@ package com.QuickNotesAPI.QuickNotes.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.QuickNotesAPI.QuickNotes.model.Users;
@@ -14,6 +15,9 @@ public class UsersService implements IUsersService {
 
     @Autowired
     private IUsersRepository usersRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public List<Users> getListUsers() {
@@ -33,6 +37,8 @@ public class UsersService implements IUsersService {
 
     @Override
     public void register(Users user) {
+        String encodedPassword = passwordEncoder.encode(user.getUsersPassword());
+        user.setUsersPassword(encodedPassword);
         usersRepository.save(user);
     }
 
