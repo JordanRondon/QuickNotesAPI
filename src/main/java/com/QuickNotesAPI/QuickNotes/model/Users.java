@@ -17,8 +17,8 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int usersId;
 
-    @Column(name = "rol")
-    private String rol;
+    @Column(name = "users_role")
+    private String role;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -35,10 +35,10 @@ public class Users {
     public Users() {
     }
 
-    public Users(int usersId, String rol, String firstName, String lastName, String email, String usersPassword,
+    public Users(int usersId, String role, String firstName, String lastName, String email, String usersPassword,
             LocalDateTime creationDate, boolean visible) {
         this.usersId = usersId;
-        this.rol = rol;
+        this.role = role;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -55,12 +55,12 @@ public class Users {
         return this.usersId;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public String getRol() {
-        return this.rol;
+    public String getRole() {
+        return this.role;
     }
 
     public void setFirstName(String first_name) {
