@@ -18,7 +18,7 @@ public class Users {
     private int usersId;
 
     @Column(name = "rol")
-    private int rol;
+    private String rol;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -35,7 +35,7 @@ public class Users {
     public Users() {
     }
 
-    public Users(int usersId, int rol, String firstName, String lastName, String email, String usersPassword,
+    public Users(int usersId, String rol, String firstName, String lastName, String email, String usersPassword,
             LocalDateTime creationDate, boolean visible) {
         this.usersId = usersId;
         this.rol = rol;
@@ -55,11 +55,11 @@ public class Users {
         return this.usersId;
     }
 
-    public void setRol(int rol) {
+    public void setRol(String rol) {
         this.rol = rol;
     }
 
-    public int getRol() {
+    public String getRol() {
         return this.rol;
     }
 
