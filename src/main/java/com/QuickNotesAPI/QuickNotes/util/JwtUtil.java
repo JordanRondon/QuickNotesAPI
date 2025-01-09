@@ -44,4 +44,32 @@ public class JwtUtil {
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
     }
+
+    public String extractEmail(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(secretKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
+
+    public String extractRole(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(secretKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .get("role", String.class);
+    }
+
+    public boolean isTokenExpired(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(secretKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getExpiration()
+                .before(new Date());
+    }
 }
