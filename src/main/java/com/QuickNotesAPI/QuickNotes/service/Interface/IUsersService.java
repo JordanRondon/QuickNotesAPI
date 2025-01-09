@@ -14,6 +14,8 @@ public interface IUsersService {
 
     public void register(Users user);
 
+    public String login(String email, String password);
+
     public void disable(int userId);
 
 }

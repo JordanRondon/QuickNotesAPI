@@ -65,6 +65,20 @@ public class UsersController {
         }
     }
 
+    @PostMapping("/login")
+    private ResponseEntity<String> login(@RequestBody Users user) {
+        try {
+            String email = user.getEmail();
+            String password = user.getUsersPassword();
+            String jwt = usersService.login(email, password);
+            return ResponseEntity.ok(jwt);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An unexpected error occurred: " + e.getMessage());
+        }
+    }
+
     @PatchMapping("/disable/{userId}")
     private ResponseEntity<String> disable(@PathVariable int userId) {
         try {

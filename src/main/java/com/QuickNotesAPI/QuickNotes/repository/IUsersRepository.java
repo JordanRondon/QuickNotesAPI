@@ -16,6 +16,9 @@ public interface IUsersRepository extends JpaRepository<Users, Integer> {
     @Query("SELECT us FROM Users us WHERE us.lastName LIKE CONCAT(:lastNameInitial, '%')")
     public List<Users> getListUsersByLastNameInit(@Param("lastNameInitial") String lastNameInitial);
 
+    @Query("SELECT us FROM Users us WHERE us.email = :email AND us.visible = true")
+    public Users findByEmail(@Param("email") String email);
+
     @Modifying
     @Transactional
     @Query("UPDATE Users us SET us.visible = false WHERE us.usersId = :userId")
