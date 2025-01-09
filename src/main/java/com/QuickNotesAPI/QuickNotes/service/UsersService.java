@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.QuickNotesAPI.QuickNotes.model.Users;
 import com.QuickNotesAPI.QuickNotes.repository.IUsersRepository;
 import com.QuickNotesAPI.QuickNotes.service.Interface.IUsersService;
+import com.QuickNotesAPI.QuickNotes.util.JwtUtil;
 
 @Service
 public class UsersService implements IUsersService {
@@ -18,6 +19,9 @@ public class UsersService implements IUsersService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @Override
     public List<Users> getListUsers() {
@@ -40,6 +44,21 @@ public class UsersService implements IUsersService {
         String encodedPassword = passwordEncoder.encode(user.getUsersPassword());
         user.setUsersPassword(encodedPassword);
         usersRepository.save(user);
+    }
+
+    @Override
+    public String login(String email, String password) {
+        Users userDetails = usersRepository.findByEmail(email);
+
+        if (userDetails == null) {
+            throw new RuntimeException("Invalid mail");
+        }
+
+        if (!passwordEncoder.matches(password, userDetails.getUsersPassword())) {
+            throw new RuntimeException("Incorrect password");
+        }
+
+        return jwtUtil.generateJWT(userDetails);
     }
 
     @Override
