@@ -16,18 +16,18 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/user/register",
-                                "/api/user/login")
+                        .requestMatchers("/api/auth/register",
+                                "/api/auth/login")
                         .permitAll()
                         .requestMatchers("/api/user/list",
                                 "/api/user/list/{lastNameInitial}",
                                 "/api/user/{userId}",
                                 "/api/user/disable/{userId}")
                         .hasRole("ADMIN")
-                        .requestMatchers("/api/user/list/{userId}",
-                                "/api/user/save/{userId}",
-                                "/api/user/update",
-                                "/api/user/delete/{noteId}")
+                        .requestMatchers("/api/note/list/{userId}",
+                                "/api/note/save/{userId}",
+                                "/api/note/update",
+                                "/api/note/delete/{noteId}")
                         .hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
