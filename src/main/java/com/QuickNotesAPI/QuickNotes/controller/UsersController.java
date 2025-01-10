@@ -8,8 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -50,32 +48,6 @@ public class UsersController {
             return ResponseEntity.ok(user);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-    }
-
-    @PostMapping("/register")
-    private ResponseEntity<String> register(@RequestBody Users user) {
-        try {
-            usersService.register(user);
-            return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An unexpected error occurred: " + e.getMessage());
-        }
-    }
-
-    @PostMapping("/login")
-    private ResponseEntity<String> login(@RequestBody Users user) {
-        try {
-            String email = user.getEmail();
-            String password = user.getUsersPassword();
-            String jwt = usersService.login(email, password);
-            return ResponseEntity.ok(jwt);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An unexpected error occurred: " + e.getMessage());
         }
     }
 
