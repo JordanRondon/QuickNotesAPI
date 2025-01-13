@@ -15,10 +15,8 @@ import com.QuickNotesAPI.QuickNotes.model.Users;
 import com.QuickNotesAPI.QuickNotes.service.UsersService;
 
 /**
- * Controlador REST que maneja las solicitudes HTTP relacionadas con los
- * usuarios.
- * Proporciona operaciones CRUD básicas para interactuar con los datos de los
- * usuarios.
+ * REST controller that handles HTTP requests related to users.
+ * Provides basic CRUD operations to interact with user data.
  */
 @RestController
 @RequestMapping("/api/user")

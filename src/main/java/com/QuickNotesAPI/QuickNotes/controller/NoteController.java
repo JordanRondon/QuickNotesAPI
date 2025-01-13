@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.QuickNotesAPI.QuickNotes.model.Note;
 import com.QuickNotesAPI.QuickNotes.service.NoteService;
 
+/**
+ * REST controller that handles HTTP requests related to user notes.
+ * Provides basic CRUD operations to interact with notes associated with a user.
+ */
 @RestController
 @RequestMapping("/api/note")
 public class NoteController {
@@ -24,6 +28,13 @@ public class NoteController {
     @Autowired
     private NoteService noteService;
 
+    /**
+     * Method that gets the list of notes associated with a user given their ID.
+     *
+     * @param userId: The ID of the user whose list of notes you want to get.
+     * @return list of notes if the operation is successful,
+     *         or a 404 error if a problem occurs.
+     */
     @GetMapping("/list/{userId}")
     private ResponseEntity<List<Note>> getListNoteByUserId(@PathVariable int userId) {
         try {
@@ -34,6 +45,14 @@ public class NoteController {
         }
     }
 
+    /**
+     * Method that saves a new note associated with a user given their ID.
+     *
+     * @param note:   The note to be saved.
+     * @param userId: The ID of the user to whom the note will be associated.
+     * @return success message if the operation is successful,
+     *         or a 500 error if an unexpected problem occurs.
+     */
     @PostMapping("/save/{userId}")
     private ResponseEntity<String> saveByUserId(@RequestBody Note note, @PathVariable int userId) {
         try {
@@ -46,6 +65,13 @@ public class NoteController {
         }
     }
 
+    /**
+     * Method that updates an existing note.
+     *
+     * @param note: The note with the updated data.
+     * @return success message if the operation is successful,
+     *         or a 500 error if an unexpected problem occurs.
+     */
     @PutMapping("/update")
     private ResponseEntity<String> updateById(@RequestBody Note note) {
         try {
@@ -58,6 +84,13 @@ public class NoteController {
         }
     }
 
+    /**
+     * Method that deletes a note given its ID.
+     *
+     * @param noteId: The ID of the note to be deleted.
+     * @return a success message if the operation is successful,
+     *         or a 500 error if an unexpected problem occurs.
+     */
     @DeleteMapping("/delete/{noteId}")
     private ResponseEntity<String> deleteById(@PathVariable int noteId) {
         try {
