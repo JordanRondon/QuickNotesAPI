@@ -12,7 +12,8 @@ import com.QuickNotesAPI.QuickNotes.model.Users;
 import jakarta.transaction.Transactional;
 
 /**
- * Repository interface for performing CRUD operations and custom queries on the
+ * Repository interface for performing CRUD operations integrating JpaRepository
+ * and custom queries on the
  * Users entity.
  */
 public interface IUsersRepository extends JpaRepository<Users, Integer> {
