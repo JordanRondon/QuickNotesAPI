@@ -16,6 +16,12 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 
+/**
+ * Utility class to generate and validate JSON Web Tokens (JWT) in the context
+ * of authentication.
+ * This class is responsible for creating, extracting and verifying the JWT
+ * tokens used in the application.
+ */
 @Component
 public class JwtUtil {
     @Value("${jwt.secret}")
@@ -23,11 +29,22 @@ public class JwtUtil {
 
     private Key secretKey;
 
+    /**
+     * Method that initializes the secret key at class construction time.
+     * Automatically invoked after bean construction.
+     */
     @PostConstruct
     public void init() {
+        // Converts the secret key into a Key object using the HMAC SHA algorithm
         this.secretKey = Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
     }
 
+    /**
+     * Method that generates a JWT based on user information.
+     *
+     * @param user: The user for which the JWT will be generated.
+     * @return generated JWT token, preceded by the "Bearer" prefix.
+     */
     public String generateJWT(Users user) {
         Map<String, Object> headers = new HashMap<>();
 
@@ -40,11 +57,18 @@ public class JwtUtil {
                 .claim("id", user.getUsersId())
                 .claim("role", user.getRole())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 6)) // 6 hours
+                // Set the expiration date (6 hours)
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 6))
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
     }
 
+    /**
+     * Method that extracts the email from the JWT.
+     *
+     * @param token: The JWT token from which the email will be extracted.
+     * @return user's email extracted from the JWT.
+     */
     public String extractEmail(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(secretKey)
@@ -54,6 +78,12 @@ public class JwtUtil {
                 .getSubject();
     }
 
+    /**
+     * Method that extracts the user's role from the JWT.
+     *
+     * @param token: The JWT token from which the role will be extracted.
+     * @return the user's role extracted from the JWT.
+     */
     public String extractRole(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(secretKey)
@@ -63,6 +93,12 @@ public class JwtUtil {
                 .get("role", String.class);
     }
 
+    /**
+     * Method that checks if the token has expired.
+     *
+     * @param token: The JWT token to verify.
+     * @return "true" if the token has expired, "false" if not.
+     */
     public boolean isTokenExpired(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(secretKey)
