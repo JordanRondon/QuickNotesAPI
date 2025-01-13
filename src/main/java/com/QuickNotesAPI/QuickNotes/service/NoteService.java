@@ -11,6 +11,9 @@ import com.QuickNotesAPI.QuickNotes.repository.INoteRepository;
 import com.QuickNotesAPI.QuickNotes.service.Interface.INoteService;
 import com.QuickNotesAPI.QuickNotes.service.Interface.IUsersService;
 
+/**
+ * Service class that implements the business logic for managing notes.
+ */
 @Service
 public class NoteService implements INoteService {
 
@@ -20,11 +23,23 @@ public class NoteService implements INoteService {
     @Autowired
     private IUsersService usersService;
 
+    /**
+     * Retrieves a list of notes associated with a specific user.
+     *
+     * @param userId the ID of the user whose notes are to be retrieved
+     * @return a list of notes for the specified user
+     */
     @Override
     public List<Note> getListNoteByUserId(int userId) {
         return noteRepository.getListNoteByUserId(userId);
     }
 
+    /**
+     * Saves a new note and associates it with a specific user.
+     *
+     * @param note   the note to be saved
+     * @param userId the ID of the user to associate with the note
+     */
     @Override
     public void saveByUserId(Note note, int userId) {
         Users user = usersService.getUserById(userId);
@@ -32,6 +47,12 @@ public class NoteService implements INoteService {
         noteRepository.save(note);
     }
 
+    /**
+     * Updates an existing note by its ID with new details.
+     *
+     * @param modifiedNote the note containing the updated details
+     * @throws RuntimeException if no note is found with the specified ID
+     */
     @Override
     public void updateById(Note modifiedNote) {
         int noteId = modifiedNote.getNoteId();
@@ -43,6 +64,11 @@ public class NoteService implements INoteService {
         noteRepository.save(note);
     }
 
+    /**
+     * Deletes a note by its ID.
+     *
+     * @param noteId the ID of the note to delete
+     */
     @Override
     public void deleteById(int noteId) {
         noteRepository.deleteById(noteId);
