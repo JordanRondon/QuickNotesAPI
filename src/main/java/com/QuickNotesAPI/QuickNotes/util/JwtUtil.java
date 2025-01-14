@@ -42,7 +42,7 @@ public class JwtUtil {
     /**
      * Method that generates a JWT based on user information.
      *
-     * @param user: The user for which the JWT will be generated.
+     * @param user The user for which the JWT will be generated.
      * @return generated JWT token, preceded by the "Bearer" prefix.
      */
     public String generateJWT(Users user) {
@@ -66,7 +66,7 @@ public class JwtUtil {
     /**
      * Method that extracts the email from the JWT.
      *
-     * @param token: The JWT token from which the email will be extracted.
+     * @param token The JWT token from which the email will be extracted.
      * @return user's email extracted from the JWT.
      */
     public String extractEmail(String token) {
@@ -81,7 +81,7 @@ public class JwtUtil {
     /**
      * Method that extracts the user's role from the JWT.
      *
-     * @param token: The JWT token from which the role will be extracted.
+     * @param token The JWT token from which the role will be extracted.
      * @return the user's role extracted from the JWT.
      */
     public String extractRole(String token) {
@@ -96,7 +96,7 @@ public class JwtUtil {
     /**
      * Method that checks if the token has expired.
      *
-     * @param token: The JWT token to verify.
+     * @param token The JWT token to verify.
      * @return "true" if the token has expired, "false" if not.
      */
     public boolean isTokenExpired(String token) {
