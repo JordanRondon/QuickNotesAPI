@@ -20,9 +20,9 @@ public class SecurityConfig {
      * requests, disabling CSRF, creating stateless sessions,
      * and adding the JWT filter.
      *
-     * @param http: HTTP security configuration object provided by Spring Security.
+     * @param http HTTP security configuration object provided by Spring Security.
      * @return SecurityFilterChain: The configured filter chain.
-     * @throws Exception: If an error occurs while configuring security.
+     * @throws Exception If an error occurs while configuring security.
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
