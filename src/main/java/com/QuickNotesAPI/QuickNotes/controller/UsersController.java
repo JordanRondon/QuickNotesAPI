@@ -44,8 +44,8 @@ public class UsersController {
     /**
      * Method that gets a list of users filtered by the initial of their last name.
      *
-     * @param lastNameInitial: The initial of the last name that is used to filter
-     *                         the users.
+     * @param lastNameInitial The initial of the last name that is used to filter
+     *                        the users.
      * @return list of filtered users if the operation is successful,
      *         or a 404 error if a problem occurs.
      */
@@ -62,7 +62,7 @@ public class UsersController {
     /**
      * Method that gets a specific user by its ID.
      *
-     * @param userId: The ID of the user to search for.
+     * @param userId The ID of the user to search for.
      * @return user if found, or a 404 error if not found.
      */
     @GetMapping("/{userId}")
@@ -78,7 +78,7 @@ public class UsersController {
     /**
      * Method that deactivates a user given their ID.
      *
-     * @param userId: The ID of the user to be deactivated.
+     * @param userId The ID of the user to be deactivated.
      * @return a success message if the operation is successful,
      *         or a 500 error if an unexpected problem occurs.
      */

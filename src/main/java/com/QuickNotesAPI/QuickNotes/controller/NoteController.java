@@ -31,7 +31,7 @@ public class NoteController {
     /**
      * Method that gets the list of notes associated with a user given their ID.
      *
-     * @param userId: The ID of the user whose list of notes you want to get.
+     * @param userId The ID of the user whose list of notes you want to get.
      * @return list of notes if the operation is successful,
      *         or a 404 error if a problem occurs.
      */
@@ -48,8 +48,8 @@ public class NoteController {
     /**
      * Method that saves a new note associated with a user given their ID.
      *
-     * @param note:   The note to be saved.
-     * @param userId: The ID of the user to whom the note will be associated.
+     * @param note   The note to be saved.
+     * @param userId The ID of the user to whom the note will be associated.
      * @return success message if the operation is successful,
      *         or a 500 error if an unexpected problem occurs.
      */
@@ -68,7 +68,7 @@ public class NoteController {
     /**
      * Method that updates an existing note.
      *
-     * @param note: The note with the updated data.
+     * @param note The note with the updated data.
      * @return success message if the operation is successful,
      *         or a 500 error if an unexpected problem occurs.
      */
@@ -87,7 +87,7 @@ public class NoteController {
     /**
      * Method that deletes a note given its ID.
      *
-     * @param noteId: The ID of the note to be deleted.
+     * @param noteId The ID of the note to be deleted.
      * @return a success message if the operation is successful,
      *         or a 500 error if an unexpected problem occurs.
      */

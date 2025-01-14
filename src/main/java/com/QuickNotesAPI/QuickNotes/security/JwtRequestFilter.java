@@ -41,14 +41,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
      * Authorization header.
      * If the token is valid, sets up authentication in the Spring security context.
      *
-     * @param request:     The HTTP request containing the JWT token in the
-     *                     Authorization header.
-     * @param response:    The HTTP response used to send error codes if the token
-     *                     is invalid.
-     * @param filterChain: The filter chain that allows the request to continue
-     *                     processing.
-     * @throws ServletException: If an error occurs in filter processing.
-     * @throws IOException:      If an error occurs in data input or output.
+     * @param request     The HTTP request containing the JWT token in the
+     *                    Authorization header.
+     * @param response    The HTTP response used to send error codes if the token
+     *                    is invalid.
+     * @param filterChain The filter chain that allows the request to continue
+     *                    processing.
+     * @throws ServletException If an error occurs in filter processing.
+     * @throws IOException      If an error occurs in data input or output.
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -97,7 +97,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     /**
      * Method that gets the JWT token from the Authorization header of the request.
      *
-     * @param request: The HTTP request containing the Authorization header.
+     * @param request The HTTP request containing the Authorization header.
      * @return JWT if present in the header, or `null` if not found.
      */
     private String getTokenFromHeader(HttpServletRequest request) {
@@ -111,10 +111,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     /**
      * Method that validates whether the JWT token has expired.
      *
-     * @param token:    The JWT token to validate.
-     * @param response: The HTTP response used to return an error if the token has
-     *                  expired.
-     * @throws IOException: If an error occurs while writing the error response.
+     * @param token    The JWT token to validate.
+     * @param response The HTTP response used to return an error if the token has
+     *                 expired.
+     * @throws IOException If an error occurs while writing the error response.
      */
     private void validateToken(String token, HttpServletResponse response) throws IOException {
         if (jwtUtil.isTokenExpired(token)) {
