@@ -43,14 +43,25 @@ QuickNotesAPI is a Java Spring Boot based application that provides a quick note
 
 - **optional:** Replace the key for the JWT signature. It is recommended that the string length be 64 characters (32 bytes)
 
-```bash
-    jwt.secret=yourPersonalizedKey
-```
+  `jwt.secret=yourPersonalizedKey`
 
 3. Install dependencies using Maven:
 
 ```bash
     mvn clean install
+```
+
+4. Create the database with the `yourDatabaseName` entered in `application.properties` and run the scripts located in the `resources\database` folder
+
+```bash
+    src/
+    └── main/
+        ├── java/com/QuickNotesAPI/QuickNotes/
+        └── resources/
+            └── database/
+                ├── 01_schema.sql
+                ├── 02_triggers.sql
+                ├── 03_data.sql
 ```
 
 ## Execution
