@@ -61,6 +61,7 @@ public class NoteService implements INoteService {
         note.setTitle(modifiedNote.getTitle());
         note.setTextNote(modifiedNote.getTextNote());
         note.setCreationDate(modifiedNote.getCreationDate());
+        note.setNumberCharacters(modifiedNote.getTextNote().length());
         noteRepository.save(note);
     }
 
